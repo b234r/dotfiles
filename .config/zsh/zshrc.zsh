@@ -26,6 +26,10 @@ export PATH="$PATH:$HOME/.cargo/bin:$HOME/Scripts"
 # Init
 #######################################################################################################################
 
-
 source "$HOME/.cargo/env"
 
+eval "$(starship init zsh)"
+
+eval "$(atuin init zsh --disable-up-arrow)"
+
+eval "$(zoxide init zsh)"
