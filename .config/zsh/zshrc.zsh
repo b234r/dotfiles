@@ -21,6 +21,7 @@ bindkey -e
 [[ ! -d "$HOME/.antigen" ]] && git clone https://github.com/zsh-users/antigen.git "$HOME/.antigen"
 source "$HOME/.antigen/antigen.zsh"
 
+antigen bundle Aloxaf/fzf-tab
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 
@@ -39,6 +40,8 @@ export LS_COLORS="$(vivid generate rose-pine-moon)"
 #######################################################################################################################
 # Init
 #######################################################################################################################
+
+source "$HOME/.config/zsh/fzf.zsh"
 
 source "$HOME/.cargo/env"
 
