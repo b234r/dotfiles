@@ -14,5 +14,5 @@ INITIAL_QUERY="${*:-}"
     --header '╱ CTRL-R (ripgrep mode) ╱ CTRL-F (fzf mode) ╱' \
     --preview 'bat --color=always {1} --highlight-line {2}' \
     --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
-    --bind 'enter:become(nohup wl-copy {1} +{2}; echo copied \'{1} +{2}\' to the clipboard)'
+    --bind "enter:become(nohup wl-copy {1} +{2}; echo copied '{1} +{2}' to the clipboard)"
 
