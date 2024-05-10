@@ -2,7 +2,7 @@
 # Setup
 #######################################################################################################################
 
-autoload -U compinit && compinit
+autoload -Uz compinit && compinit -i
 
 setopt SHARE_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
@@ -92,4 +92,4 @@ eval "$(starship init zsh)"
 
 eval "$(atuin init zsh --disable-up-arrow)"
 
-eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
