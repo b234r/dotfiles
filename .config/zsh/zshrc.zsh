@@ -19,7 +19,7 @@ export GOPATH=$HOME/go
 
 export PATH="$PATH:$HOME/.cargo/bin:$HOME/Scripts"
 
-export LS_COLORS="$(vivid generate rose-pine-moon)"
+export LS_COLORS="$(vivid generate catppuccin-macchiato)"
 
 #######################################################################################################################
 # Aliases
@@ -64,7 +64,6 @@ function lt () {
   eza --icons=always --tree --level=${1} ${@:2}
 }
 
-
 #######################################################################################################################
 # FZF
 #######################################################################################################################
@@ -72,24 +71,11 @@ function lt () {
 # default command
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 
-# rose pine moon color scheme
-export FZF_DEFAULT_OPTS="
---color=fg:#908caa,bg:#232136,hl:#ea9a97
---color=fg+:#e0def4,bg+:#393552,hl+:#ea9a97
---color=border:#e0def4,header:#3e8fb0,gutter:#232136
---color=spinner:#f6c177,info:#9ccfd8,separator:#44415a
---color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa
---border='sharp' --border-label='' --preview-window='sharp' --prompt='> '
---marker='>' --pointer='◆' --separator='─' --scrollbar='│'"
-
-# use popup for tab completion
-zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-
-zstyle ":fzf-tab:*" fzf-flags --color=fg:#908caa,bg:#232136,hl:#ea9a97 \
---color=fg+:#e0def4,bg+:#393552,hl+:#ea9a97 \
---color=border:#44415a,header:#3e8fb0,gutter:#232136 \
---color=spinner:#f6c177,info:#9ccfd8,separator:#44415a \
---color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa
+# catppuccin macchiato color scheme
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+--color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+--color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
 
 alias fs="rg-fzf.sh"
 
@@ -98,6 +84,7 @@ alias ff="fzf-tmux -p 90%,90% --ansi \
 --preview 'bat --color=always {1}' \
 --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
 --bind 'enter:become(nohup wl-copy {}; echo copied \"{}\" to clipboard)'"
+
 #######################################################################################################################
 # Setup
 #######################################################################################################################
@@ -111,8 +98,6 @@ setopt APPEND_HISTORY
 HISTFILE=~/.history
 HISTSIZE=100000
 SAVEHIST=100000
-
-bindkey -e
 
 #######################################################################################################################
 # Init
