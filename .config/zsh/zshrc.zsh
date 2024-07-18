@@ -1,25 +1,14 @@
 #######################################################################################################################
-# Plugins
-#######################################################################################################################
-
-[[ ! -d "$HOME/.antigen" ]] && git clone https://github.com/zsh-users/antigen.git "$HOME/.antigen"
-source "$HOME/.antigen/antigen.zsh"
-
-antigen bundle Aloxaf/fzf-tab
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-
-antigen apply
-
-#######################################################################################################################
 # Env
 #######################################################################################################################
 
 export GOPATH=$HOME/go
 
-export PATH="$PATH:$HOME/.cargo/bin:$HOME/Scripts"
+export PATH="$PATH:$HOME/.cargo/bin:$HOME/Scripts:$HOME/.local/bin:$GOPATH/bin"
 
 export LS_COLORS="$(vivid generate catppuccin-macchiato)"
+
+export ZVM_VI_ESCAPE_BINDKEY=jk
 
 #######################################################################################################################
 # Aliases
@@ -33,11 +22,13 @@ alias dnf='sd dnf'
 alias c='clear'
 alias tp='trash-put'
 alias vi='nvim'
+alias cat='bat'
 alias b='batgrep'
 alias man='batman'
 alias sz='source ~/.zshrc'
 alias copy='wl-copy'
 alias paste='wl-paste'
+alias rm='rm -i'
 
 alias g='git'
 alias gs='git status -u'  
@@ -77,6 +68,21 @@ export FZF_DEFAULT_OPTS=" \
 --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
 --color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
 
+# use popup for tab completion
+#zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+
+#zstyle ":fzf-tab:*" fzf-flags "--color=bg+:#363a4f,bg:#24273a,hl:#ed8796,fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6,marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
+
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+# NOTE: don't use escape sequences here, fzf-tab will ignore them
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':completion:*' menu no
+
 alias fs="rg-fzf.sh"
 
 alias ff="fzf-tmux -p 90%,90% --ansi \
@@ -89,15 +95,29 @@ alias ff="fzf-tmux -p 90%,90% --ansi \
 # Setup
 #######################################################################################################################
 
-autoload -Uz compinit && compinit -i
+#autoload -Uz compinit && compinit -i
 
-setopt SHARE_HISTORY
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt APPEND_HISTORY
+#setopt SHARE_HISTORY
+#setopt HIST_EXPIRE_DUPS_FIRST
+#setopt APPEND_HISTORY
 
-HISTFILE=~/.history
-HISTSIZE=100000
-SAVEHIST=100000
+#HISTFILE=~/.history
+#HISTSIZE=100000
+#SAVEHIST=100000
+
+#######################################################################################################################
+# Plugins
+#######################################################################################################################
+
+[[ ! -d "$HOME/.antigen" ]] && git clone https://github.com/zsh-users/antigen.git "$HOME/.antigen"
+source "$HOME/.antigen/antigen.zsh"
+
+antigen bundle Aloxaf/fzf-tab
+antigen bundle jeffreytse/zsh-vi-mode
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
+
+antigen apply
 
 #######################################################################################################################
 # Init
@@ -109,4 +129,4 @@ eval "$(starship init zsh)"
 
 eval "$(atuin init zsh --disable-up-arrow)"
 
-eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init zsh --cmd cd)"
