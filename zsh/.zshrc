@@ -6,9 +6,7 @@ export GOPATH=$HOME/go
 
 export PATH="$PATH:$HOME/.cargo/bin:$HOME/Scripts:$HOME/.local/bin:$GOPATH/bin"
 
-export LS_COLORS="$(vivid generate catppuccin-macchiato)"
-
-export ZVM_VI_ESCAPE_BINDKEY=jk
+export LS_COLORS="$(vivid generate tokyonight-night)"
 
 #######################################################################################################################
 # Aliases
@@ -62,16 +60,29 @@ function lt () {
 # default command
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 
-# catppuccin macchiato color scheme
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
---color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
---color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
-
-# use popup for tab completion
-#zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-
-#zstyle ":fzf-tab:*" fzf-flags "--color=bg+:#363a4f,bg:#24273a,hl:#ed8796,fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6,marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+  --highlight-line \
+  --info=inline-right \
+  --ansi \
+  --layout=reverse \
+  --border=none
+  --color=bg+:#283457 \
+  --color=bg:#16161e \
+  --color=border:#27a1b9 \
+  --color=fg:#c0caf5 \
+  --color=gutter:#16161e \
+  --color=header:#ff9e64 \
+  --color=hl+:#2ac3de \
+  --color=hl:#2ac3de \
+  --color=info:#545c7e \
+  --color=marker:#ff007c \
+  --color=pointer:#ff007c \
+  --color=prompt:#2ac3de \
+  --color=query:#c0caf5:regular \
+  --color=scrollbar:#27a1b9 \
+  --color=separator:#ff9e64 \
+  --color=spinner:#ff007c \
+"
 
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
