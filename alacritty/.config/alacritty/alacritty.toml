@@ -14,5 +14,5 @@ normal = { family = "RobotoMono Nerd Font", style = "Regular" }
 
 [general]
 import = [
-"~/.config/alacritty/tokyonight_night.toml"
+  "~/.config/alacritty/tokyonight_night.toml"
 ]
