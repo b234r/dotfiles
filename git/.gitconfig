@@ -1,0 +1,7 @@
+[user]
+	email = subscribe+gh@b234r.net
+	name = John
+
+[core]
+  editor = nvim
+
