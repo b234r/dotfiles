@@ -141,3 +141,13 @@ eval "$(starship init zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
 
 eval "$(zoxide init zsh --cmd cd)"
+
+if [ -z $TMUX ]; then
+  WS='ws'$(xdotool get_desktop)
+  if [[ $(tmux list-sessions 2> /dev/null | rg $WS) ]]; then
+    tmux a -t $WS
+  else
+    tmux new-session -s $WS 'fortune | cowsay -r -W 100 | lolcat -r -f; exec zsh'
+  fi
+fi
+
