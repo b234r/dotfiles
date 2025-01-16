@@ -143,11 +143,12 @@ eval "$(atuin init zsh --disable-up-arrow)"
 eval "$(zoxide init zsh --cmd cd)"
 
 if [ -z $TMUX ]; then
-  WS='ws'$(xdotool get_desktop)
-  if [[ $(tmux list-sessions 2> /dev/null | rg $WS) ]]; then
-    tmux a -t $WS
+  c=$(wmctrl -d 2> /dev/null | grep \* | awk '{print $1;}')
+  ws="ws${c:-0}"
+  if [[ $(tmux list-sessions 2> /dev/null | rg $ws) ]]; then
+    tmux a -t $ws
   else
-    tmux new-session -s $WS 'fortune | cowsay -r -W 100 | lolcat -r -f; exec zsh'
+    tmux new-session -s $ws 'fortune | cowsay -r -W 80 | lolcat -r -f; exec zsh'
   fi
 fi
 
