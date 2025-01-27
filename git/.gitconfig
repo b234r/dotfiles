@@ -20,7 +20,7 @@
   hyperlinks = true
   dark = true
   line-numbers = true
-  features = tokyonight  
+  features = tokyonight
 
 [merge]
   conflictstyle = zdiff3
