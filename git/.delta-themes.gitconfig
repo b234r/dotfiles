@@ -41,9 +41,7 @@
     file-renamed-label = [->]
     hunk-header-style = omit
     line-numbers-left-format = " {nm:>3} │"
-    line-numbers-left-style = red
     line-numbers-right-format = " {np:>3} │"
-    line-numbers-right-style = green
     line-numbers-minus-style = red italic black
     line-numbers-plus-style = green italic black
     line-numbers-zero-style = "#434C5E" italic
