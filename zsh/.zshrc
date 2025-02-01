@@ -4,7 +4,7 @@
 
 export GOPATH=$HOME/go
 
-export PATH="$PATH:$HOME/.cargo/bin:$HOME/Scripts:$HOME/.local/bin:$GOPATH/bin"
+export PATH="$PATH:/usr/local/WordNet-3.0/bin:$HOME/.cargo/bin:$HOME/Scripts:$HOME/.local/bin:$GOPATH/bin"
 
 export LS_COLORS="$(vivid generate tokyonight-night)"
 
@@ -13,7 +13,7 @@ export LS_COLORS="$(vivid generate tokyonight-night)"
 #######################################################################################################################
 
 alias ..='cd ..'
-alias ....='cd ../..' 
+alias ....='cd ../..'
 
 alias sd='sudo'
 alias dnf='sd dnf'
@@ -29,8 +29,8 @@ alias paste='wl-paste'
 alias rm='rm -i'
 
 alias g='git'
-alias gs='git status -u'  
-alias gb='git branch'  
+alias gs='git status -u'
+alias gb='git branch'
 alias ga='git add'
 alias gaa='git add --all'
 alias gco='git checkout'
@@ -43,9 +43,9 @@ alias gp='git push origin HEAD'
 alias gp!='git push origin --force HEAD'
 
 alias ls='eza --group-directories-first --icons=always'
-alias l='ls'  
-alias ll='ls -lA' 
-alias la='ls -A' 
+alias l='ls'
+alias ll='ls -lA'
+alias la='ls -A'
 alias lu='eza -lA --icons=always --sort=size --total-size'
 alias lz='eza -lA --icons=always --sort=time'
 
@@ -151,4 +151,3 @@ if [ -z $TMUX ]; then
     tmux new-session -s $ws 'fortune | cowsay -r -W 80 | lolcat -r -f; exec zsh'
   fi
 fi
-
