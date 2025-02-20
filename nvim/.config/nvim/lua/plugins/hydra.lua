@@ -34,7 +34,7 @@ focus^^^^^^  window^^^^^^
                _<Esc>_: exit
 ]],
 			config = {
-				color = "blue",
+				color = "red",
 				invoke_on_body = true,
 				hint = {
 					float_opts = {
