@@ -3,9 +3,9 @@ return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
   dependencies = {
-    'rafamadriz/friendly-snippets',
-    'echasnovski/mini.nvim',
     'Kaiser-Yang/blink-cmp-dictionary',
+    'echasnovski/mini.nvim',
+    'rafamadriz/friendly-snippets',
   },
   -- use a release tag to download pre-built binaries
   version = '*',
