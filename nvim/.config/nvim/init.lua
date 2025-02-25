@@ -21,8 +21,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins", {
+require("lazy").setup({
+	spec = {
+		{import = "plugins"},
+		{import = "plugins.lang"},
+	},
   ui = { border = 'rounded' },
   change_detection = { notify = false },
-  rocks = {enabled = false,},
+  rocks = { enabled = false, },
 })
