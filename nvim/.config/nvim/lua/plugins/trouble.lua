@@ -1,9 +1,8 @@
 return {
   "folke/trouble.nvim",
   dependencies = { "mbbill/undotree" },
-  config = function()
-    require("trouble").setup()
-
+  opts = {},
+  init = function()
     vim.diagnostic.config({
       virtual_text = false,
       signs = {
@@ -27,12 +26,12 @@ return {
     Hydra({
       name = "Diagnostics",
       hint = [[
-       _{_: first error  _[_: prev error  _]_: next error  _}_: last error _x_: buffer diag
-      _d{_: first diag  _d[_: prev diag  _d]_: next diag  _d}_: last diag  _X_: project diag
-      _w{_: first warn  _w[_: prev warn  _w]_: next warn  _w}_: last warn  _u_: undotree
+ _{_: first error  _[_: prev error  _]_: next error  _}_: last error _x_: buffer diag
+_d{_: first diag  _d[_: prev diag  _d]_: next diag  _d}_: last diag  _X_: project diag
+_w{_: first warn  _w[_: prev warn  _w]_: next warn  _w}_: last warn  _u_: undotree
 
-                   _q_: toggle quickfix  _l_: toggle loclist  _<Esc>_: exit
-      ]],
+						 _q_: toggle quickfix  _l_: toggle loclist  _<Esc>_: exit
+]],
 
       config = {
         on_enter = function()

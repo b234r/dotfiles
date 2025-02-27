@@ -1,5 +1,4 @@
 return {
-
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
   dependencies = {
@@ -9,7 +8,6 @@ return {
   },
   -- use a release tag to download pre-built binaries
   version = '*',
-
   opts = {
     keymap = {
       preset = 'none',
