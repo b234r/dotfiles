@@ -4,9 +4,14 @@
 
 export GOPATH=$HOME/go
 
-export PATH="$PATH:$HOME/.cargo/bin:$HOME/Scripts:$HOME/.local/bin:$GOPATH/bin"
+export NODE_PATH=$(npm root -g)
+
+export PATH="$PATH:/usr/local/WordNet-3.0/bin:$HOME/.cargo/bin:$HOME/Scripts:$HOME/.local/bin:$GOPATH/bin"
 
 export LS_COLORS="$(vivid generate tokyonight-night)"
+
+# https://github.com/jesseduffield/lazydocker/issues/4
+export DOCKER_HOST=unix:///run/user/1000/podman/podman.sock
 
 #######################################################################################################################
 # Aliases
