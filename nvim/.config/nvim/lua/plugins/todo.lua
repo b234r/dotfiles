@@ -3,7 +3,6 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "folke/snacks.nvim",
   },
   opts = { signs = false },
   init = function()
