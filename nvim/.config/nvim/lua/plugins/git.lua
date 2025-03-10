@@ -7,10 +7,7 @@ local date_author_fn = function(line_porcelain, config, idx)
       idx = idx,
       values = {
         {
-          textValue = os.date(
-            config.date_format,
-            line_porcelain.committer_time
-          ),
+          textValue = os.date(config.date_format, line_porcelain.committer_time),
           hl = hash,
         },
         {
@@ -43,13 +40,12 @@ return {
       "nvim-treesitter/nvim-treesitter-context",
     },
     lazy = false,
-    config = function()
-      require("blame").setup({
-        focus_blame = false,
-        format_fn = date_author_fn,
-        max_summary_width = 20,
-      })
-
+    opts = {
+      focus_blame = false,
+      format_fn = date_author_fn,
+      max_summary_width = 20,
+    },
+    init = function()
       vim.api.nvim_create_autocmd("User", {
         pattern = "BlameViewOpened",
         callback = function(event)
@@ -76,34 +72,32 @@ return {
     dependencies = {
       "folke/snacks.nvim",
     },
-    config = function()
-      local gitsigns = require("gitsigns")
+    opts = {
+      attach_to_untracked = true,
+      on_attach = function()
+        local gitsigns = require("gitsigns")
+        local map = vim.keymap.set
 
-      gitsigns.setup({
-        signcolumn = false,
-        numhl = true,
-        attach_to_untracked = true,
-      })
+        map("n", "]g", function()
+          if vim.wo.diff then
+            vim.cmd.normal({ "]c", bang = true })
+          else
+            gitsigns.nav_hunk("next")
+          end
+        end)
 
-      local map = vim.keymap.set
+        map("n", "[g", function()
+          if vim.wo.diff then
+            vim.cmd.normal({ "[c", bang = true })
+          else
+            gitsigns.nav_hunk("prev")
+          end
+        end)
 
-      map("n", "]g", function()
-        if vim.wo.diff then
-          vim.cmd.normal({ "]c", bang = true })
-        else
-          gitsigns.nav_hunk("next")
-        end
-      end)
+        map({ "o", "x" }, "gh", ":<C-U>Gitsigns select_hunk<CR>")
 
-      map("n", "[g", function()
-        if vim.wo.diff then
-          vim.cmd.normal({ "[c", bang = true })
-        else
-          gitsigns.nav_hunk("prev")
-        end
-      end)
-
-      map({ "o", "x" }, "gh", ":<C-U>Gitsigns select_hunk<CR>")
-    end,
+        require("hydras.git")
+      end,
+    },
   },
 }
