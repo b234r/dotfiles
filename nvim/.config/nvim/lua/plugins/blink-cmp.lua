@@ -3,9 +3,10 @@ return {
   -- optional: provides snippets for the snippet source
   dependencies = {
     'Kaiser-Yang/blink-cmp-dictionary',
-    'echasnovski/mini.nvim',
+    'echasnovski/mini.icons',
     'rafamadriz/friendly-snippets',
   },
+  event = "InsertEnter",
   -- use a release tag to download pre-built binaries
   version = '*',
   opts = {
