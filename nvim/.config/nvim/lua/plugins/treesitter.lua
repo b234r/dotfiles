@@ -11,29 +11,18 @@ return {
         "bash",
         "c",
         "cpp",
-        "csv",
-        "dockerfile",
-        "helm",
         "graphql",
         "html",
         "javascript",
-        "json",
         "just",
         "make",
-        "markdown",
-        "markdown_inline",
-        "psv",
         "python",
         "rust",
         "sql",
         "typescript",
-        "terraform",
-        "toml",
-        "tsv",
         "vim",
         "vimdoc",
         "xml",
-        "yaml",
       },
 
       -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -149,5 +138,8 @@ return {
       vim.api.nvim_set_hl(0, 'TreesitterContextBottom', { underline = true, sp = "#3b4261" })
       vim.api.nvim_set_hl(0, 'TreesitterContextLineNumberBottom', { underline = true, sp = "#3b4261" })
     end,
+  },
+  {
+    "HiPhish/rainbow-delimiters.nvim",
   },
 }
