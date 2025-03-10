@@ -28,6 +28,12 @@ return {
     },
   },
 
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    opts = function(_, opts)
+      util.list_insert_unique(opts.ensure_installed, { "`lang`" })
+    end,
+  },
   -- Add `server` and setup lspconfig
   {
     "neovim/nvim-lspconfig",

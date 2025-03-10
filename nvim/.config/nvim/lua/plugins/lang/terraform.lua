@@ -1,26 +1,16 @@
-local get_intelephense_license = function()
-  local f = assert(io.open(os.getenv("HOME") .. "/intelephense/license.txt", "rb"))
-
-  local content = f:read("*a")
-
-  f:close()
-
-  return string.gsub(content, "%s+", "")
-end
-
 local util = require("util")
 
 return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
-      util.list_insert_unique(opts.ensure_installed, { "php" })
+      util.list_insert_unique(opts.ensure_installed, { "terraform", "hcl" })
     end,
   },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = function(_, opts)
-      util.list_insert_unique(opts.ensure_installed, { "intelephense" })
+      util.list_insert_unique(opts.ensure_installed, { "terraform-ls", "tflint" })
     end,
   },
   {
@@ -28,18 +18,14 @@ return {
     dependencies = {},
     opts = {
       servers = {
-        intelephense = {
-          init_options = {
-            licenceKey = get_intelephense_license(),
-          },
-        },
+        terraformls = {},
       },
       setup = {
-        intelephense = function(_, opts)
+        terraformls = function(_, opts)
           vim.api.nvim_create_autocmd("LspAttach", {
             callback = function(ev)
               local client = vim.lsp.get_client_by_id(ev.data.client_id)
-              if client == nil or client.name ~= "intelephense" then
+              if client == nil or client.name ~= "terraformls" then
                 return
               end
 
@@ -52,5 +38,16 @@ return {
         end
       },
     },
+  },
+  {
+    "nvimtools/none-ls.nvim",
+    opts = function(_, opts)
+      local nls = require("null-ls")
+      opts.sources = vim.list_extend(opts.sources or {}, {
+        nls.builtins.formatting.packer,
+        nls.builtins.formatting.terraform_fmt,
+        nls.builtins.diagnostics.terraform_validate,
+      })
+    end,
   },
 }
