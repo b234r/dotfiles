@@ -29,7 +29,7 @@ vim.opt.undofile = true
 vim.opt.backup = false -- Don't store backup while overwriting the file
 vim.opt.writebackup = false
 
--- Editing
+-- editing
 vim.opt.ignorecase = true                         -- Ignore case when searching (use `\C` to force not doing that)
 vim.opt.incsearch = true                          -- Show search results while typing
 vim.opt.infercase = true                          -- Infer letter cases for a richer built-in keyword completion
@@ -52,9 +52,6 @@ vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 10
 
 vim.opt.smoothscroll = true
-
-vim.opt.list = true
-vim.opt.listchars = "tab:│ ,leadmultispace:│ "
 
 -- folding
 vim.opt.foldlevel = 99
