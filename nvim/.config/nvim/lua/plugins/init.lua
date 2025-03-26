@@ -1,22 +1,23 @@
 return {
-  { "christoomey/vim-tmux-navigator" }, -- tmux & split window navigation
-  {
-    "petertriho/nvim-scrollbar",
-    config = function(_, opts)
-      local colors = require("tokyonight.colors").setup()
-      require("scrollbar").setup({
-        handle = {
-          color = colors.bg_highlight,
-        },
-        marks = {
-          Search = { color = colors.orange },
-          Error = { color = colors.error },
-          Warn = { color = colors.warning },
-          Info = { color = colors.info },
-          Hint = { color = colors.hint },
-          Misc = { color = colors.purple },
-        }
-      })
-    end
-  },
+	{ "christoomey/vim-tmux-navigator" }, -- tmux & split window navigation
+	{
+		"axkirillov/hbac.nvim",
+		opts = {},
+	},
+	{
+		"itchyny/vim-highlighturl",
+		event = "VeryLazy",
+	},
+	{
+		"svermeulen/vim-cutlass",
+		event = "VeryLazy",
+		init = function(_, opts)
+			-- set keymaps
+			local keymap = vim.keymap -- for conciseness
+
+			keymap.set({ "n", "x" }, "x", "d", { desc = "cut" })
+			keymap.set("n", "xx", "dd", { desc = "cut" })
+			keymap.set("n", "X", "D", { desc = "cut" })
+		end,
+	},
 }
