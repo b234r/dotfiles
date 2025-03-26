@@ -1,32 +1,35 @@
+---
+
+notARepository: 'quit'
+os:
+  editPreset: nvim
 git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
-
 gui:
+  showBottomLine: false
   nerdFontsVersion: "3"
-  theme:
-    activeBorderColor:
-      - "#ff9e64"
-      - "bold"
-    inactiveBorderColor:
-      - "#27a1b9"
-    searchingActiveBorderColor:
-      - "#ff9e64"
-      - "bold"
-    optionsTextColor:
-      - "#7aa2f7"
-    selectedLineBgColor:
-      - "#283457"
-    cherryPickedCommitFgColor:
-      - "#7aa2f7"
-    cherryPickedCommitBgColor:
-      - "#bb9af7"
-    markedBaseCommitFgColor:
-      - "#7aa2f7"
-    markedBaseCommitBgColor:
-      - "#e0af68"
-    unstagedChangesColor:
-      - "#db4b4b"
-    defaultFgColor:
-      - "#c0caf5"
+theme:
+  activeBorderColor:
+    - '#40a02b'
+    - bold
+  inactiveBorderColor:
+    - '#6c6f85'
+  optionsTextColor:
+    - '#1e66f5'
+  selectedLineBgColor:
+    - '#ccd0da'
+  cherryPickedCommitBgColor:
+    - '#bcc0cc'
+  cherryPickedCommitFgColor:
+    - '#40a02b'
+  unstagedChangesColor:
+    - '#d20f39'
+  defaultFgColor:
+    - '#4c4f69'
+  searchingActiveBorderColor:
+    - '#df8e1d'
+
+authorColors:
+  '*': '#7287fd'

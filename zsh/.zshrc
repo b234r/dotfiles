@@ -8,7 +8,7 @@ export NODE_PATH=$(npm root -g)
 
 export PATH="$PATH:/usr/local/WordNet-3.0/bin:$HOME/.cargo/bin:$HOME/Scripts:$HOME/.local/bin:$GOPATH/bin"
 
-export LS_COLORS="$(vivid generate tokyonight-night)"
+export LS_COLORS="$(vivid generate catppuccin-latte)"
 
 # https://github.com/jesseduffield/lazydocker/issues/4
 export DOCKER_HOST=unix:///run/user/1000/podman/podman.sock
@@ -18,7 +18,7 @@ export DOCKER_HOST=unix:///run/user/1000/podman/podman.sock
 #######################################################################################################################
 
 alias ..='cd ..'
-alias ....='cd ../..' 
+alias ....='cd ../..'
 
 alias sd='sudo'
 alias dnf='sd dnf'
@@ -32,10 +32,13 @@ alias sz='source ~/.zshrc'
 alias copy='wl-copy'
 alias paste='wl-paste'
 alias rm='rm -i'
+alias docker='podman'
+alias ld='lazydocker'
 
+alias lg='lazygit'
 alias g='git'
-alias gs='git status -u'  
-alias gb='git branch'  
+alias gs='git status -u'
+alias gb='git branch'
 alias ga='git add'
 alias gaa='git add --all'
 alias gco='git checkout'
@@ -48,9 +51,9 @@ alias gp='git push origin HEAD'
 alias gp!='git push origin --force HEAD'
 
 alias ls='eza --group-directories-first --icons=always'
-alias l='ls'  
-alias ll='ls -lA' 
-alias la='ls -A' 
+alias l='ls'
+alias ll='ls -lA'
+alias la='ls -A'
 alias lu='eza -lA --icons=always --sort=size --total-size'
 alias lz='eza -lA --icons=always --sort=time'
 
@@ -66,28 +69,17 @@ function lt () {
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
-  --highlight-line \
-  --info=inline-right \
-  --ansi \
-  --layout=reverse \
-  --border=rounded
-  --color=bg+:#283457 \
-  --color=bg:#16161e \
-  --color=border:#27a1b9 \
-  --color=fg:#c0caf5 \
-  --color=gutter:#16161e \
-  --color=header:#ff9e64 \
-  --color=hl+:#2ac3de \
-  --color=hl:#2ac3de \
-  --color=info:#545c7e \
-  --color=marker:#ff007c \
-  --color=pointer:#ff007c \
-  --color=prompt:#2ac3de \
-  --color=query:#c0caf5:regular \
-  --color=scrollbar:#27a1b9 \
-  --color=separator:#ff9e64 \
-  --color=spinner:#ff007c \
-"
+--highlight-line \
+--info=inline-right \
+--ansi \
+--layout=reverse \
+--border=rounded
+--color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 \
+--color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
+--color=marker:#7287fd,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39 \
+--color=selected-bg:#bcc0cc \
+--color=border:#ccd0da,label:#4c4f69"
+
 
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
@@ -156,4 +148,5 @@ if [ -z $TMUX ]; then
     tmux new-session -s $ws 'fortune | cowsay -r -W 80 | lolcat -r -f; exec zsh'
   fi
 fi
-
+export PATH="/home/john/.config/herd-lite/bin:$PATH"
+export PHP_INI_SCAN_DIR="/home/john/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
