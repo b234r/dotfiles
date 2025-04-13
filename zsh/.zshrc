@@ -13,6 +13,10 @@ export LS_COLORS="$(vivid generate catppuccin-mocha)"
 # https://github.com/jesseduffield/lazydocker/issues/4
 export DOCKER_HOST=unix:///run/user/1000/podman/podman.sock
 
+export PATH="/home/john/.config/herd-lite/bin:$PATH"
+
+export PHP_INI_SCAN_DIR="/home/john/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+
 #######################################################################################################################
 # Aliases
 #######################################################################################################################
@@ -121,11 +125,34 @@ alias ff="fzf-tmux -p 90%,90% --ansi \
 source "$HOME/.antigen/antigen.zsh"
 
 antigen bundle Aloxaf/fzf-tab
-antigen bundle jeffreytse/zsh-vi-mode
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 
 antigen apply
+
+# Ctrl+Right - Move forward by word
+bindkey '^[[1;5C' forward-word
+
+# Ctrl+Left - Move backward by word
+bindkey '^[[1;5D' backward-word
+
+# Ctrl+D - Delete line
+function delete_line() {
+  BUFFER=""
+  zle end-of-line
+}
+zle -N delete_line
+bindkey '^D' delete_line
+
+# Home/End - Go to beginning/end of line
+bindkey '\e[H' beginning-of-line
+bindkey '\e[F' end-of-line
+bindkey '\e[1~' beginning-of-line
+bindkey '\e[4~' end-of-line
+
+# Ctrl+Home/End - Go to beginning/end of buffer
+bindkey '\e[1;5H' beginning-of-buffer-or-history
+bindkey '\e[1;5F' end-of-buffer-or-history
 
 #######################################################################################################################
 # Init
@@ -148,5 +175,3 @@ if [ -z $TMUX ]; then
     tmux new-session -s $ws 'fortune | cowsay -r -W 80 | lolcat -r -f; exec zsh'
   fi
 fi
-export PATH="/home/john/.config/herd-lite/bin:$PATH"
-export PHP_INI_SCAN_DIR="/home/john/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
