@@ -15,4 +15,4 @@ italic = { family = "VictorMono Nerd Font", style = "Italic" }
 bold_italic = { family = "VictorMono Nerd Font", style = "Bold Italic" }
 
 [general]
-import = ["~/.config/alacritty/catppuccin-latte.toml"]
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]

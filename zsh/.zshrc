@@ -8,7 +8,7 @@ export NODE_PATH=$(npm root -g)
 
 export PATH="$PATH:/usr/local/WordNet-3.0/bin:$HOME/.cargo/bin:$HOME/Scripts:$HOME/.local/bin:$GOPATH/bin"
 
-export LS_COLORS="$(vivid generate catppuccin-latte)"
+export LS_COLORS="$(vivid generate catppuccin-mocha)"
 
 # https://github.com/jesseduffield/lazydocker/issues/4
 export DOCKER_HOST=unix:///run/user/1000/podman/podman.sock
@@ -74,11 +74,11 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 --ansi \
 --layout=reverse \
 --border=rounded
---color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 \
---color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
---color=marker:#7287fd,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39 \
---color=selected-bg:#bcc0cc \
---color=border:#ccd0da,label:#4c4f69"
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--color=selected-bg:#45475a \
+--color=border:#313244,label:#cdd6f4"
 
 
 # disable sort when completing `git checkout`
