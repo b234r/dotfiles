@@ -69,6 +69,22 @@ vim.opt.signcolumn = "yes"
 -- line numbers
 vim.opt.number = true
 
+-----------------------------------------------------------------------------------------------------------------------
+--- Autocmds
+-----------------------------------------------------------------------------------------------------------------------
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+
+-- Highlight yanked text
+local highlight_group = augroup('YankHighlight', { clear = true })
+autocmd('TextYankPost', {
+    pattern = '*',
+    callback = function()
+        vim.highlight.on_yank({ timeout = 170 })
+    end,
+    group = highlight_group,
+})
+
 -- non-relative numbers in insert mode
 vim.api.nvim_command([[
   augroup numbertoggle
@@ -83,30 +99,3 @@ vim.api.nvim_command([[
   autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
   augroup END
 ]])
-
------------------------------------------------------------------------------------------------------------------------
--- Key Bindings
------------------------------------------------------------------------------------------------------------------------
-vim.keymap.set("n", "<ESC>", function()
-  vim.cmd.nohlsearch() -- clear highlights
-  vim.cmd.echo()       -- clear short-message
-end)
-
-vim.keymap.set("n", "<C-d>", "<C-d>zz", {})
-vim.keymap.set("n", "<C-u>", "<C-u>zz", {})
-vim.keymap.set("n", "n", "nzzzv", { desc = "Next result" })
-vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous result" })
-
--- Indent while remaining in visual mode.
-vim.keymap.set("v", "<", "<gv")
-vim.keymap.set("v", ">", ">gv")
-
-vim.keymap.set("n", "s", "<Nop>", {})
-vim.keymap.set("n", "S", "<Nop>", {})
-
-vim.keymap.set({ "n", "x" }, "gy", '"+y', { desc = "Copy to system clipboard" })
-vim.keymap.set("n", "gp", '"+p', { desc = "Paste from system clipboard" })
-vim.keymap.set("x", "gp", '"+P', { desc = "Paste from system clipboard" })
-
-vim.keymap.set("n", "<C-S>", "<Cmd>silent! update | redraw<CR>", { desc = "Save" })
-vim.keymap.set({ "i", "x" }, "<C-S>", "<Esc><Cmd>silent! update | redraw<CR>", { desc = "Save and go to Normal mode" })
